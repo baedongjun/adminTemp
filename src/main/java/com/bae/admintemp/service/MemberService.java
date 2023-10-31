@@ -9,14 +9,14 @@ import java.util.Optional;
 
 @Service
 public class MemberService {
-    private final MemberRepository repository;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public MemberService(MemberRepository repository) {
-        this.repository = repository;
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     public Optional<Member> findOne(String userId) {
-        return repository.findByUserid(userId);
+        return memberRepository.findByUserid(userId);
     }
 }

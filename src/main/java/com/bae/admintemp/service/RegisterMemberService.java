@@ -17,12 +17,15 @@ public class RegisterMemberService {
         this.repository = repository;
     }
 
-    public Long join(String userid, String pw) {
-        Member member = Member.createUser(userid, pw, passwordEncoder);
+    public String join(String userid, String pw) {
+        Member member = new Member();
+        member.setUserid(userid);
+        member.setPw(passwordEncoder.encode(pw));
+        member.setRoles("USER");
         validateDuplicateMember(member);
         repository.save(member);
 
-        return member.getId();
+        return member.getUserid();
     }
 
     private void validateDuplicateMember(Member member) {
