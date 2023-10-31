@@ -6,6 +6,7 @@ import org.thymeleaf.context.Context;
 
 @Controller
 public class ContextController {
+
     @RequestMapping("/")
     public String context(Context context) {
         context.setVariable("message", "Hello, Thymeleaf!");
