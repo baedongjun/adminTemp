@@ -40,22 +40,19 @@ public class BoardController {
     }
 
     @PostMapping("/write")
-    public String writePost(Board board, @AuthenticationPrincipal User user, Model model){
-        Member member = new Member();
-        member.setUserid(user.getUsername());
+    public String writePost(Board board, Member member){
         board.setMember(member);
         boardService.write(board);
-
         return "redirect:/board/list";
     }
 
-    @GetMapping("/read")
+    @GetMapping("/view")
     public String read(Long bno, Model model){
-        Board board = boardService.read(bno);
+        Board board = boardService.view(bno);
         if(board != null){
             model.addAttribute("board", board);
         }
-        return "board/read";
+        return "board/view";
     }
 
     @GetMapping("/modify")
@@ -63,11 +60,6 @@ public class BoardController {
         Board board = boardService.read(bno);
         model.addAttribute("board", board);
         return "board/write";
-    }
-    @PostMapping("/modify")
-    public String modifyPost(Board board, Model model){
-        boardService.modify(board);
-        return "redirect:/board/list";
     }
 
     @PostMapping("/remove")

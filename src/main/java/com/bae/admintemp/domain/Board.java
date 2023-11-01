@@ -17,7 +17,6 @@ public class Board {
     private String title;
     private String writer;
     private String content;
-    @ColumnDefault("0")
     private Long view_cnt;
     @Temporal(value = TemporalType.TIMESTAMP)
     @CreationTimestamp
@@ -34,7 +33,7 @@ public class Board {
         return bno;
     }
 
-    public void setBno(Long id) {
+    public void setBno(Long bno) {
         this.bno = bno;
     }
 

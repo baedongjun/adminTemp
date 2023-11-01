@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>파일업로드</title>
-    <style>
-        a { text-decoration: none; }
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
-<h2>파일 업로드</h2>
-<form id="uploadForm" action="/board/uploadFile" method="post" enctype="multipart/form-data">
-    <input type="file" id="file" name="files" multiple/>
-    <br><br>
-    <button>Upload File</button>
-</form>
-</body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/layout}">
+
+<th:block layout:fragment="content">
+    <h2>파일 업로드</h2>
+    <form id="uploadForm" action="/board/uploadFile" method="post" enctype="multipart/form-data">
+        <input type="file" id="file" name="files" multiple/>
+        <br><br>
+        <button>Upload File</button>
+    </form>
+</th:block>
 </html>

@@ -27,12 +27,18 @@ public class BoardService {
         return boardRepository.save(board);
     }
 
-    //게시물을 읽어오는 메서드
-    public Board read(Long bno){
+    public Board view(Long bno){
         Board board = boardRepository.findByBno(bno);
         if(board == null) return null;
         board.setView_cnt(board.getView_cnt() + 1);
         boardRepository.save(board);
+        return board;
+    }
+
+    //게시물을 읽어오는 메서드
+    public Board read(Long bno){
+        Board board = boardRepository.findByBno(bno);
+        if(board == null) return null;
         return board;
     }
 
