@@ -29,11 +29,11 @@
 
         <script>
             const loginId = document.getElementById('login_id');
-            loginId.innerHTML = sessionStorage.getItem('userid');
+            loginId.innerHTML = sessionStorage.getItem('mUserid');
 
             const logoutBtn = document.getElementById('logout_btn');
             logoutBtn.addEventListener('click', () => {
-                sessionStorage.setItem('userid', '');
+                sessionStorage.setItem('mUserid', '');
             });
         </script>
     </div>
