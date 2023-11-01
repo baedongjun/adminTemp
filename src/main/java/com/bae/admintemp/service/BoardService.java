@@ -1,16 +1,12 @@
 package com.bae.admintemp.service;
 
-import com.bae.admintemp.domain.Board;
-import com.bae.admintemp.domain.Member;
-import com.bae.admintemp.repository.BoardRepository;
-import com.bae.admintemp.repository.MemberRepository;
+import com.bae.admintemp.data.entity.Board;
+import com.bae.admintemp.data.repository.BoardRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BoardService {
@@ -18,44 +14,44 @@ public class BoardService {
     private BoardRepository boardRepository;
 
     // 전체 게시물을 가져오는 메서드
-    public List<Board> getList(){
+    public List<Board> getList() {
         return (List<Board>) boardRepository.findAll();
     }
 
     //게시물을 작성하는 메서드
-    public Board write(Board board){
+    public Board write(Board board) {
         return boardRepository.save(board);
     }
 
-    public Board view(int bId){
-        Board board = boardRepository.findByBId(bId);
-        if(board == null) return null;
-        board.setbView(board.getbView() + 1);
+    public Board view(int id) {
+        Board board = boardRepository.findById(id);
+        if (board == null) return null;
+        board.setViewCnt(board.getViewCnt() + 1);
         boardRepository.save(board);
         return board;
     }
 
     //게시물을 읽어오는 메서드
-    public Board read(int bId){
-        Board board = boardRepository.findByBId(bId);
-        if(board == null) return null;
+    public Board read(int id) {
+        Board board = boardRepository.findById(id);
+        if (board == null) return null;
         return board;
     }
 
     //게시물을 수정하는 메서드
-    public Board modify(Board newBoard){
-        Board board = boardRepository.findByBId(newBoard.getbId());
-        if(board == null) return null;
-        board.setbTitle(newBoard.getbTitle());
-        board.setbContents(newBoard.getbContents());
+    public Board modify(Board newBoard) {
+        Board board = boardRepository.findById(newBoard.getId());
+        if (board == null) return null;
+        board.setTitle(newBoard.getTitle());
+        board.setContents(newBoard.getContents());
         return boardRepository.save(board);
     }
 
     //게시물을 삭제하는 메서드
     @Transactional
-    public void remove(int bId){
-        Board board = boardRepository.findByBId(bId);
-        if(board != null) boardRepository.deleteByBId(bId);
+    public void remove(int id) {
+        Board board = boardRepository.findById(id);
+        if (board != null) boardRepository.deleteById(id);
 
     }
 }

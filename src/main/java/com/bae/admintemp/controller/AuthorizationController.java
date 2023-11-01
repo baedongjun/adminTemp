@@ -1,6 +1,6 @@
 package com.bae.admintemp.controller;
 
-import com.bae.admintemp.dto.MemberJoinDto;
+import com.bae.admintemp.data.dto.MemberDto;
 import com.bae.admintemp.service.RegisterMemberService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,9 +18,9 @@ public class AuthorizationController {
     }
 
     @PostMapping("/join")
-    public ResponseEntity<String> join(@RequestBody MemberJoinDto dto) {
+    public ResponseEntity<String> join(@RequestBody MemberDto dto) {
         try {
-            registerMemberService.join(dto.getmUserid(), dto.getmUserpw());
+            registerMemberService.join(dto.getUserId(), dto.getUserPw());
             return ResponseEntity.ok("join success");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

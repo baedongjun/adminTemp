@@ -1,11 +1,11 @@
-package com.bae.admintemp.repository;
+package com.bae.admintemp.data.repository;
 
-import com.bae.admintemp.domain.Member;
+import com.bae.admintemp.data.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, String> {
 
-    Optional<Member> findByMUserid(String mUserId);
+    Optional<Member> findByUserId(String userId);
 }

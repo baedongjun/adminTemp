@@ -31,8 +31,8 @@ public class SpringSecurityConfig {
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login-process")
-                        .usernameParameter("mUserid")
-                        .passwordParameter("mUserpw")
+                        .usernameParameter("userId")
+                        .passwordParameter("userPw")
                         .defaultSuccessUrl("/dashboard", true)
                         .permitAll()
                 )

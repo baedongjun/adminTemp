@@ -1,7 +1,7 @@
 package com.bae.admintemp.service;
 
-import com.bae.admintemp.domain.Member;
-import com.bae.admintemp.repository.MemberRepository;
+import com.bae.admintemp.data.entity.Member;
+import com.bae.admintemp.data.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,19 +17,19 @@ public class RegisterMemberService {
         this.repository = repository;
     }
 
-    public String join(String mUserid, String mUserpw) {
+    public String join(String userId, String userPw) {
         Member member = new Member();
-        member.setmUserid(mUserid);
-        member.setmUserpw(passwordEncoder.encode(mUserpw));
+        member.setUserId(userId);
+        member.setUserPw(passwordEncoder.encode(userPw));
         member.setRoles("USER");
         validateDuplicateMember(member);
         repository.save(member);
 
-        return member.getmUserid();
+        return member.getUserId();
     }
 
     private void validateDuplicateMember(Member member) {
-        repository.findByMUserid(member.getmUserid())
+        repository.findByUserId(member.getUserId())
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });

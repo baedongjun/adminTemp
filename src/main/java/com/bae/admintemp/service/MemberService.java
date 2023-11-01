@@ -1,7 +1,7 @@
 package com.bae.admintemp.service;
 
-import com.bae.admintemp.domain.Member;
-import com.bae.admintemp.repository.MemberRepository;
+import com.bae.admintemp.data.entity.Member;
+import com.bae.admintemp.data.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public Optional<Member> findOne(String mUserId) {
-        return memberRepository.findByMUserid(mUserId);
+    public Optional<Member> findOne(String userId) {
+        return memberRepository.findByUserId(userId);
     }
 }

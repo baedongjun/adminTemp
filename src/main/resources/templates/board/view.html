@@ -7,11 +7,11 @@
     <div class="container">
         <h2 th:class="writing-header">게시판 읽기</h2>
         <form id="form" class="frm" action="" method="post">
-            <input type="hidden" name="bId" th:value="${board.bId}">
+            <input type="hidden" name="id" th:value="${board.id}">
 
-            <input name="mUserid" type="hidden" th:value="${board.member.mUserid}" readonly='readonly'>
-            <input name="bTitle" type="text" th:value="${board.bTitle}" readonly='readonly'><br>
-            <textarea name="bContents" rows="20" th:text="${board.bContents}">content</textarea><br>
+            <input name="userId" type="hidden" th:value="${board.member.userId}" readonly='readonly'>
+            <input name="title" type="text" th:value="${board.title}" readonly='readonly'><br>
+            <textarea name="contents" rows="20" th:text="${board.contents}">content</textarea><br>
 
             <button type="button" id="modifyBtn" class="btn btn-modify"><i class="fa fa-edit"></i> 수정</button>
             <button type="button" id="removeBtn" class="btn btn-remove"><i class="fa fa-trash"></i> 삭제</button>
@@ -22,13 +22,13 @@
                 if(!confirm("정말로 삭제하시겠습니까?")) return;
 
                 let form = $("#form");
-                form.attr("action", "[[@{/board/remove(bId=${board.bId})}]]");
+                form.attr("action", "[[@{/board/remove(id=${board.id})}]]");
                 form.attr("method", "post");
                 form.submit();
             });
 
             $("#modifyBtn").on("click", function(){
-                location.href="[[@{/board/modify(bId=${board.bId})}]]"
+                location.href="[[@{/board/modify(id=${board.id})}]]"
             });
 
             $("#listBtn").on("click", function(){
