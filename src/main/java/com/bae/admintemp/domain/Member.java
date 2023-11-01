@@ -16,23 +16,16 @@ public class Member {
     private String userid;
     private String pw;
     private String username;
-    private String inflow;
-    private String grade;
-    private String zip;
-    private String addr;
-    private String addr2;
-    private String sms_yn;
-    private String email_yn;
     @Temporal(value = TemporalType.TIMESTAMP)
     @CreationTimestamp
-    private Date create_date;
+    private Date create_at;
     @Temporal(value = TemporalType.TIMESTAMP)
     @UpdateTimestamp
-    private Date update_date;
+    private Date update_at;
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date expiration_date;
+    private Date expiration_at;
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date secession_date;
+    private Date secession_at;
     private String secession_reason;
     private String roles;
 
@@ -63,92 +56,36 @@ public class Member {
         this.username = username;
     }
 
-    public String getInflow() {
-        return inflow;
+    public Date getCreate_at() {
+        return create_at;
     }
 
-    public void setInflow(String inflow) {
-        this.inflow = inflow;
+    public void setCreate_at(Date create_at) {
+        this.create_at = create_at;
     }
 
-    public String getGrade() {
-        return grade;
+    public Date getUpdate_at() {
+        return update_at;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setUpdate_at(Date update_at) {
+        this.update_at = update_at;
     }
 
-    public String getZip() {
-        return zip;
+    public Date getExpiration_at() {
+        return expiration_at;
     }
 
-    public void setZip(String zip) {
-        this.zip = zip;
+    public void setExpiration_at(Date expiration_at) {
+        this.expiration_at = expiration_at;
     }
 
-    public String getAddr() {
-        return addr;
+    public Date getSecession_at() {
+        return secession_at;
     }
 
-    public void setAddr(String addr) {
-        this.addr = addr;
-    }
-
-    public String getAddr2() {
-        return addr2;
-    }
-
-    public void setAddr2(String addr2) {
-        this.addr2 = addr2;
-    }
-
-    public String getSms_yn() {
-        return sms_yn;
-    }
-
-    public void setSms_yn(String sms_yn) {
-        this.sms_yn = sms_yn;
-    }
-
-    public String getEmail_yn() {
-        return email_yn;
-    }
-
-    public void setEmail_yn(String email_yn) {
-        this.email_yn = email_yn;
-    }
-
-    public Date getCreate_date() {
-        return create_date;
-    }
-
-    public void setCreate_date(Date create_date) {
-        this.create_date = create_date;
-    }
-
-    public Date getUpdate_date() {
-        return update_date;
-    }
-
-    public void setUpdate_date(Date update_date) {
-        this.update_date = update_date;
-    }
-
-    public Date getExpiration_date() {
-        return expiration_date;
-    }
-
-    public void setExpiration_date(Date expiration_date) {
-        this.expiration_date = expiration_date;
-    }
-
-    public Date getSecession_date() {
-        return secession_date;
-    }
-
-    public void setSecession_date(Date secession_date) {
-        this.secession_date = secession_date;
+    public void setSecession_at(Date secession_at) {
+        this.secession_at = secession_at;
     }
 
     public String getSecession_reason() {
@@ -174,6 +111,4 @@ public class Member {
     public void setList(List<Board> list) {
         this.list = list;
     }
-
-
 }

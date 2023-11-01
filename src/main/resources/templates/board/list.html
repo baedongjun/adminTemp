@@ -18,7 +18,7 @@
                     <td th:text="${board.bno}" th:class="no">1</td>
                     <td><a th:href="@{/board/view(bno=${board.bno})}" th:text="${board.title}">Today I'm gonna finish</a></td>
                     <td th:text="${board.member.userid}">aaa</td>
-                    <td th:text="${#dates.format(board.update_date,'yyyy-MM-dd')}">2020-01-30</td>
+                    <td th:text="${#dates.format(board.update_at,'yyyy-MM-dd')}">2020-01-30</td>
                     <td th:text="${board.view_cnt}" th:class="viewcnt">999</td>
                 </tr>
                 </c:forEach>

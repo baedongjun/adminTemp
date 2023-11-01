@@ -20,10 +20,10 @@ public class Board {
     private Long view_cnt;
     @Temporal(value = TemporalType.TIMESTAMP)
     @CreationTimestamp
-    private Date create_date;
+    private Date create_at;
     @Temporal(value = TemporalType.TIMESTAMP)
     @UpdateTimestamp
-    private Date update_date;
+    private Date update_at;
 
     @ManyToOne
     @JoinColumn(name = "userid", nullable = false)
@@ -77,20 +77,20 @@ public class Board {
         this.view_cnt = view_cnt;
     }
 
-    public Date getCreate_date() {
-        return create_date;
+    public Date getCreate_at() {
+        return create_at;
     }
 
-    public void setCreate_date(Date create_date) {
-        this.create_date = create_date;
+    public void setCreate_at(Date create_at) {
+        this.create_at = create_at;
     }
 
-    public Date getUpdate_date() {
-        return update_date;
+    public Date getUpdate_at() {
+        return update_at;
     }
 
-    public void setUpdate_date(Date update_date) {
-        this.update_date = update_date;
+    public void setUpdate_at(Date update_at) {
+        this.update_at = update_at;
     }
 
     public Member getMember() {
