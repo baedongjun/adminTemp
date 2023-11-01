@@ -10,32 +10,31 @@ import java.util.Date;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cate_id;
-    private Integer parent_cate_id;
-    private String cate_name;
+    private Integer cateId;
+    private Integer parentCateId;
+    private String cateName;
 
-
-    public Integer getCate_id() {
-        return cate_id;
+    public Integer getCateId() {
+        return cateId;
     }
 
-    public void setCate_id(Integer cate_id) {
-        this.cate_id = cate_id;
+    public void setCateId(Integer cateId) {
+        this.cateId = cateId;
     }
 
-    public Integer getParent_cate_id() {
-        return parent_cate_id;
+    public Integer getParentCateId() {
+        return parentCateId;
     }
 
-    public void setParent_cate_id(Integer parent_cate_id) {
-        this.parent_cate_id = parent_cate_id;
+    public void setParentCateId(Integer parentCateId) {
+        this.parentCateId = parentCateId;
     }
 
-    public String getCate_name() {
-        return cate_name;
+    public String getCateName() {
+        return cateName;
     }
 
-    public void setCate_name(String cate_name) {
-        this.cate_name = cate_name;
+    public void setCateName(String cateName) {
+        this.cateName = cateName;
     }
 }

@@ -32,7 +32,7 @@ public class BoardController {
     public String writeGet(@AuthenticationPrincipal User user, Model model){
         Board board = new Board();
         Member member = new Member();
-        member.setUserid(user.getUsername());
+        member.setmUserid(user.getUsername());
         board.setMember(member);
 
         model.addAttribute("board", board);
@@ -47,8 +47,8 @@ public class BoardController {
     }
 
     @GetMapping("/view")
-    public String read(Long bno, Model model){
-        Board board = boardService.view(bno);
+    public String read(int bId, Model model){
+        Board board = boardService.view(bId);
         if(board != null){
             model.addAttribute("board", board);
         }
@@ -56,15 +56,15 @@ public class BoardController {
     }
 
     @GetMapping("/modify")
-    public String modifyGet(Long bno, Model model){
-        Board board = boardService.read(bno);
+    public String modifyGet(int bId, Model model){
+        Board board = boardService.read(bId);
         model.addAttribute("board", board);
         return "board/write";
     }
 
     @PostMapping("/remove")
-    public String remove(Long bno, Model model){
-        boardService.remove(bno);
+    public String remove(int bId){
+        boardService.remove(bId);
         return "redirect:/board/list";
     }
 

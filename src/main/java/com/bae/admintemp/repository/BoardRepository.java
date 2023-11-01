@@ -6,17 +6,17 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface BoardRepository extends JpaRepository<Board, Long> {
-    int countAllByWriter(String writer);
+public interface BoardRepository extends JpaRepository<Board, Integer> {
+    int countAllByMUserid(String mUserid);
 
-    Board findByBno(Long bno);
+    Board findByBId(int bId);
 
-    void deleteByBno(Long bno);
+    void deleteByBId(int bId);
 
-    List<Board> findByWriter(String writer);
+    List<Board> findByMUserid(String mUserid);
 
-    List<Board> findByTitleAndWriter(String title, String writer);
+    List<Board> findByBTitleAndMUserid(String bTitle, String mUserid);
 
     @Transactional
-    int deleteByWriter(String writer);
+    int deleteByMUserid(String mUserid);
 }

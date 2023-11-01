@@ -16,7 +16,7 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public Optional<Member> findOne(String userId) {
-        return memberRepository.findByUserid(userId);
+    public Optional<Member> findOne(String mUserId) {
+        return memberRepository.findByMUserid(mUserId);
     }
 }

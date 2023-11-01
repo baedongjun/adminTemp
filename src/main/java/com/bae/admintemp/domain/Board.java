@@ -11,86 +11,109 @@ import java.util.Date;
 @Entity
 public class Board {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bno;
-    private String board_type;
-    private String title;
-    private String writer;
-    private String content;
-    private Long view_cnt;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true)
+    private int bId;
+    private String bTitle;
+    private String bContents;
+    private String bImgUrl;
+    private String bImgName;
+    private int bView;
+    private String bSecure;
+    private int bLikeCnt;
     @Temporal(value = TemporalType.TIMESTAMP)
     @CreationTimestamp
-    private Date create_at;
+    private Date createAt;
     @Temporal(value = TemporalType.TIMESTAMP)
     @UpdateTimestamp
-    private Date update_at;
+    private Date updateAt;
 
     @ManyToOne
-    @JoinColumn(name = "userid", nullable = false)
+    @JoinColumn(name = "mUserid", nullable = false)
     private Member member;
 
-    public Long getBno() {
-        return bno;
+    @ManyToOne
+    @JoinColumn(name = "cateId", nullable = false)
+    private Category category;
+
+    public int getbId() {
+        return bId;
     }
 
-    public void setBno(Long bno) {
-        this.bno = bno;
+    public void setbId(int bId) {
+        this.bId = bId;
     }
 
-    public String getBoard_type() {
-        return board_type;
+    public String getbTitle() {
+        return bTitle;
     }
 
-    public void setBoard_type(String board_type) {
-        this.board_type = board_type;
+    public void setbTitle(String bTitle) {
+        this.bTitle = bTitle;
     }
 
-    public String getTitle() {
-        return title;
+    public String getbContents() {
+        return bContents;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setbContents(String bContents) {
+        this.bContents = bContents;
     }
 
-    public String getWriter() {
-        return writer;
+    public String getbImgUrl() {
+        return bImgUrl;
     }
 
-    public void setWriter(String writer) {
-        this.writer = writer;
+    public void setbImgUrl(String bImgUrl) {
+        this.bImgUrl = bImgUrl;
     }
 
-    public String getContent() {
-        return content;
+    public String getbImgName() {
+        return bImgName;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setbImgName(String bImgName) {
+        this.bImgName = bImgName;
     }
 
-    public Long getView_cnt() {
-        return view_cnt;
+    public int getbView() {
+        return bView;
     }
 
-    public void setView_cnt(Long view_cnt) {
-        this.view_cnt = view_cnt;
+    public void setbView(int bView) {
+        this.bView = bView;
     }
 
-    public Date getCreate_at() {
-        return create_at;
+    public String getbSecure() {
+        return bSecure;
     }
 
-    public void setCreate_at(Date create_at) {
-        this.create_at = create_at;
+    public void setbSecure(String bSecure) {
+        this.bSecure = bSecure;
     }
 
-    public Date getUpdate_at() {
-        return update_at;
+    public int getbLikeCnt() {
+        return bLikeCnt;
     }
 
-    public void setUpdate_at(Date update_at) {
-        this.update_at = update_at;
+    public void setbLikeCnt(int bLikeCnt) {
+        this.bLikeCnt = bLikeCnt;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
     }
 
     public Member getMember() {
@@ -99,5 +122,13 @@ public class Board {
 
     public void setMember(Member member) {
         this.member = member;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

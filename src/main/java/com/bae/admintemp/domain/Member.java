@@ -13,87 +13,87 @@ import java.util.List;
 public class Member {
     @Id
     @Column(unique = true)
-    private String userid;
-    private String pw;
-    private String username;
+    private String mUserid;
+    private String mUserpw;
+    private String mUsername;
     @Temporal(value = TemporalType.TIMESTAMP)
     @CreationTimestamp
-    private Date create_at;
+    private Date createAt;
     @Temporal(value = TemporalType.TIMESTAMP)
     @UpdateTimestamp
-    private Date update_at;
+    private Date updateAt;
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date expiration_at;
+    private Date expirationAt;
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date secession_at;
-    private String secession_reason;
+    private Date secessionAt;
+    private String secessionReason;
     private String roles;
 
     @OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
     List<Board> list = new ArrayList<>();
 
-    public String getUserid() {
-        return userid;
+    public String getmUserid() {
+        return mUserid;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setmUserid(String mUserid) {
+        this.mUserid = mUserid;
     }
 
-    public String getPw() {
-        return pw;
+    public String getmUserpw() {
+        return mUserpw;
     }
 
-    public void setPw(String pw) {
-        this.pw = pw;
+    public void setmUserpw(String mUserpw) {
+        this.mUserpw = mUserpw;
     }
 
-    public String getUsername() {
-        return username;
+    public String getmUsername() {
+        return mUsername;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setmUsername(String mUsername) {
+        this.mUsername = mUsername;
     }
 
-    public Date getCreate_at() {
-        return create_at;
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setCreate_at(Date create_at) {
-        this.create_at = create_at;
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 
-    public Date getUpdate_at() {
-        return update_at;
+    public Date getUpdateAt() {
+        return updateAt;
     }
 
-    public void setUpdate_at(Date update_at) {
-        this.update_at = update_at;
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
     }
 
-    public Date getExpiration_at() {
-        return expiration_at;
+    public Date getExpirationAt() {
+        return expirationAt;
     }
 
-    public void setExpiration_at(Date expiration_at) {
-        this.expiration_at = expiration_at;
+    public void setExpirationAt(Date expirationAt) {
+        this.expirationAt = expirationAt;
     }
 
-    public Date getSecession_at() {
-        return secession_at;
+    public Date getSecessionAt() {
+        return secessionAt;
     }
 
-    public void setSecession_at(Date secession_at) {
-        this.secession_at = secession_at;
+    public void setSecessionAt(Date secessionAt) {
+        this.secessionAt = secessionAt;
     }
 
-    public String getSecession_reason() {
-        return secession_reason;
+    public String getSecessionReason() {
+        return secessionReason;
     }
 
-    public void setSecession_reason(String secession_reason) {
-        this.secession_reason = secession_reason;
+    public void setSecessionReason(String secessionReason) {
+        this.secessionReason = secessionReason;
     }
 
     public String getRoles() {

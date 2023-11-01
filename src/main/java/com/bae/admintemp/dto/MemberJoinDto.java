@@ -2,22 +2,22 @@ package com.bae.admintemp.dto;
 
 public class MemberJoinDto {
 
-    private String userid;
-    private String pw;
+    private String mUserid;
+    private String mUserpw;
 
-    public String getUserid() {
-        return userid;
+    public String getmUserid() {
+        return mUserid;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setmUserid(String mUserid) {
+        this.mUserid = mUserid;
     }
 
-    public String getPw() {
-        return pw;
+    public String getmUserpw() {
+        return mUserpw;
     }
 
-    public void setPw(String pw) {
-        this.pw = pw;
+    public void setmUserpw(String mUserpw) {
+        this.mUserpw = mUserpw;
     }
 }

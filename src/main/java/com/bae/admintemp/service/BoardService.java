@@ -27,35 +27,35 @@ public class BoardService {
         return boardRepository.save(board);
     }
 
-    public Board view(Long bno){
-        Board board = boardRepository.findByBno(bno);
+    public Board view(int bId){
+        Board board = boardRepository.findByBId(bId);
         if(board == null) return null;
-        board.setView_cnt(board.getView_cnt() + 1);
+        board.setbView(board.getbView() + 1);
         boardRepository.save(board);
         return board;
     }
 
     //게시물을 읽어오는 메서드
-    public Board read(Long bno){
-        Board board = boardRepository.findByBno(bno);
+    public Board read(int bId){
+        Board board = boardRepository.findByBId(bId);
         if(board == null) return null;
         return board;
     }
 
     //게시물을 수정하는 메서드
     public Board modify(Board newBoard){
-        Board board = boardRepository.findByBno(newBoard.getBno());
+        Board board = boardRepository.findByBId(newBoard.getbId());
         if(board == null) return null;
-        board.setTitle(newBoard.getTitle());
-        board.setContent(newBoard.getContent());
+        board.setbTitle(newBoard.getbTitle());
+        board.setbContents(newBoard.getbContents());
         return boardRepository.save(board);
     }
 
     //게시물을 삭제하는 메서드
     @Transactional
-    public void remove(Long bno){
-        Board board = boardRepository.findByBno(bno);
-        if(board != null) boardRepository.deleteByBno(bno);
+    public void remove(int bId){
+        Board board = boardRepository.findByBId(bId);
+        if(board != null) boardRepository.deleteByBId(bId);
 
     }
 }

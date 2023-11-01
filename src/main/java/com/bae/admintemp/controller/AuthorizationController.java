@@ -20,7 +20,7 @@ public class AuthorizationController {
     @PostMapping("/join")
     public ResponseEntity<String> join(@RequestBody MemberJoinDto dto) {
         try {
-            registerMemberService.join(dto.getUserid(), dto.getPw());
+            registerMemberService.join(dto.getmUserid(), dto.getmUserpw());
             return ResponseEntity.ok("join success");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

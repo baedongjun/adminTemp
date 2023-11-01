@@ -12,146 +12,145 @@ import java.util.List;
 public class Customer {
     @Id
     @Column(unique = true)
-    private String C_userid;
-    private String C_userpw;
-    private String C_username;
-    private String C_provider;
-    private String C_grade;
-    private String C_zip;
-    private String C_addr;
-    private String C_addr2;
-    private String C_sms_yn;
-    private String C_email_yn;
+    private String cUserid;
+    private String cUserpw;
+    private String cUsername;
+    private String Provider;
+    private String Grade;
+    private String zip;
+    private String addr;
+    private String addr2;
+    private String smsYn;
+    private String emailYn;
     @Temporal(value = TemporalType.TIMESTAMP)
     @CreationTimestamp
-    private Date create_at;
+    private Date createAt;
     @Temporal(value = TemporalType.TIMESTAMP)
     @UpdateTimestamp
-    private Date update_at;
+    private Date updateAt;
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date expiration_at;
+    private Date expirationAt;
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date secession_at;
-    private String secession_reason;
+    private Date secessionAt;
+    private String secessionReason;
 
-    public String getC_userid() {
-        return C_userid;
+    public String getcUserid() {
+        return cUserid;
     }
 
-    public void setC_userid(String c_userid) {
-        C_userid = c_userid;
+    public void setcUserid(String cUserid) {
+        this.cUserid = cUserid;
     }
 
-    public String getC_userpw() {
-        return C_userpw;
+    public String getcUserpw() {
+        return cUserpw;
     }
 
-    public void setC_userpw(String c_userpw) {
-        C_userpw = c_userpw;
+    public void setcUserpw(String cUserpw) {
+        this.cUserpw = cUserpw;
     }
 
-    public String getC_username() {
-        return C_username;
+    public String getcUsername() {
+        return cUsername;
     }
 
-    public void setC_username(String c_username) {
-        C_username = c_username;
+    public void setcUsername(String cUsername) {
+        this.cUsername = cUsername;
     }
 
-    public String getC_provider() {
-        return C_provider;
+    public String getProvider() {
+        return Provider;
     }
 
-    public void setC_provider(String c_provider) {
-        C_provider = c_provider;
+    public void setProvider(String provider) {
+        Provider = provider;
     }
 
-    public String getC_grade() {
-        return C_grade;
+    public String getGrade() {
+        return Grade;
     }
 
-    public void setC_grade(String c_grade) {
-        C_grade = c_grade;
+    public void setGrade(String grade) {
+        Grade = grade;
     }
 
-    public String getC_zip() {
-        return C_zip;
+    public String getZip() {
+        return zip;
     }
 
-    public void setC_zip(String c_zip) {
-        C_zip = c_zip;
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
-    public String getC_addr() {
-        return C_addr;
+    public String getAddr() {
+        return addr;
     }
 
-    public void setC_addr(String c_addr) {
-        C_addr = c_addr;
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 
-    public String getC_addr2() {
-        return C_addr2;
+    public String getAddr2() {
+        return addr2;
     }
 
-    public void setC_addr2(String c_addr2) {
-        C_addr2 = c_addr2;
+    public void setAddr2(String addr2) {
+        this.addr2 = addr2;
     }
 
-    public String getC_sms_yn() {
-        return C_sms_yn;
+    public String getSmsYn() {
+        return smsYn;
     }
 
-    public void setC_sms_yn(String c_sms_yn) {
-        C_sms_yn = c_sms_yn;
+    public void setSmsYn(String smsYn) {
+        this.smsYn = smsYn;
     }
 
-    public String getC_email_yn() {
-        return C_email_yn;
+    public String getEmailYn() {
+        return emailYn;
     }
 
-    public void setC_email_yn(String c_email_yn) {
-        C_email_yn = c_email_yn;
+    public void setEmailYn(String emailYn) {
+        this.emailYn = emailYn;
     }
 
-    public Date getCreate_at() {
-        return create_at;
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setCreate_at(Date create_at) {
-        this.create_at = create_at;
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 
-    public Date getUpdate_at() {
-        return update_at;
+    public Date getUpdateAt() {
+        return updateAt;
     }
 
-    public void setUpdate_at(Date update_at) {
-        this.update_at = update_at;
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
     }
 
-    public Date getExpiration_at() {
-        return expiration_at;
+    public Date getExpirationAt() {
+        return expirationAt;
     }
 
-    public void setExpiration_at(Date expiration_at) {
-        this.expiration_at = expiration_at;
+    public void setExpirationAt(Date expirationAt) {
+        this.expirationAt = expirationAt;
     }
 
-    public Date getSecession_at() {
-        return secession_at;
+    public Date getSecessionAt() {
+        return secessionAt;
     }
 
-    public void setSecession_at(Date secession_at) {
-        this.secession_at = secession_at;
+    public void setSecessionAt(Date secessionAt) {
+        this.secessionAt = secessionAt;
     }
 
-    public String getSecession_reason() {
-        return secession_reason;
+    public String getSecessionReason() {
+        return secessionReason;
     }
 
-    public void setSecession_reason(String secession_reason) {
-        this.secession_reason = secession_reason;
+    public void setSecessionReason(String secessionReason) {
+        this.secessionReason = secessionReason;
     }
-
 }
