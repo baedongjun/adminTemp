@@ -1,9 +1,9 @@
 package com.bae.admintemp.data.handler.impl;
 
 
-import com.bae.admintemp.data.dao.ProductDAO;
-import com.bae.admintemp.data.entity.Product;
-import com.bae.admintemp.data.handler.ProductDataHandler;
+import com.bae.admintemp.data.dao.CategoryDAO;
+import com.bae.admintemp.data.entity.Category;
+import com.bae.admintemp.data.handler.CategoryDataHandler;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,32 +12,32 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public class CategoryDataHandlerImpl implements ProductDataHandler {
+public class CategoryDataHandlerImpl implements CategoryDataHandler {
 
     private final Logger LOGGER = LoggerFactory.getLogger(CategoryDataHandlerImpl.class);
 
-    ProductDAO productDAO;
+    CategoryDAO categoryDAO;
 
     @Autowired
-    public CategoryDataHandlerImpl(ProductDAO productDAO) {
-        this.productDAO = productDAO;
+    public CategoryDataHandlerImpl(CategoryDAO categoryDAO) {
+        this.categoryDAO = categoryDAO;
     }
 
     @Override
-    public Product saveProductEntity(String productId, String productName, int productPrice,
-                                     int productStock) {
+    public Category saveCategoryEntity(String categoryId, String categoryName, int categoryPrice,
+                                     int categoryStock) {
 
-        LOGGER.debug("[saveProductEntity] 매개변수를 통해 Entity 객체 생성");
-        Product product = new Product(productId, productName, productPrice,
-                productStock);
+        LOGGER.debug("[saveCategoryEntity] 매개변수를 통해 Entity 객체 생성");
+        Category category = new Category(categoryId, categoryName, categoryPrice,
+                categoryStock);
 
-        LOGGER.info("[saveProductEntity] productDAO로 Product 정보 저장 요청. productId : {}", productId);
-        return productDAO.saveProduct(product);
+        LOGGER.info("[saveCategoryEntity] categoryDAO로 Category 정보 저장 요청. categoryId : {}", categoryId);
+        return categoryDAO.saveCategory(category);
     }
 
     @Override
-    public Product getProductEntity(String productId) {
-        LOGGER.info("[saveProductEntity] productDAO로 Product 정보 요청. productId : {}", productId);
-        return productDAO.getProduct(productId);
+    public Category getCategoryEntity(String categoryId) {
+        LOGGER.info("[saveCategoryEntity] categoryDAO로 Category 정보 요청. categoryId : {}", categoryId);
+        return categoryDAO.getCategory(categoryId);
     }
 }

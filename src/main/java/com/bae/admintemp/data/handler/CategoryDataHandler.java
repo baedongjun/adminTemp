@@ -5,8 +5,8 @@ import com.bae.admintemp.data.entity.Category;
 
 public interface CategoryDataHandler {
 
-    Category saveCategoryEntity(String categoryId, String categoryName, int categoryPrice, int categoryStock);
+    Category saveCategoryEntity(int cateId, int parentCateId, String cateName);
 
-    Category getCategoryEntity(String categoryId);
+    Category getCategoryEntity(int cateId);
 
 }

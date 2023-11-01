@@ -1,12 +1,9 @@
 package com.bae.admintemp.data.handler.impl;
 
 
-import com.bae.admintemp.data.dao.ProductDAO;
-import com.bae.admintemp.data.entity.Category;
+import com.bae.admintemp.data.dao.MemberDAO;
 import com.bae.admintemp.data.entity.Member;
-import com.bae.admintemp.data.entity.Product;
 import com.bae.admintemp.data.handler.MemberDataHandler;
-import com.bae.admintemp.data.handler.ProductDataHandler;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,8 +36,8 @@ public class MemberDataHandlerImpl implements MemberDataHandler {
     }
 
     @Override
-    public Member getMemberEntity(String memberId) {
-        LOGGER.info("[saveMemberEntity] memberDAO로 Member 정보 요청. memberId : {}", memberId);
-        return memberDAO.getMember(memberId);
+    public Member getMemberEntity(String userId) {
+        LOGGER.info("[saveMemberEntity] memberDAO로 Member 정보 요청. memberId : {}", userId);
+        return memberDAO.getMember(userId);
     }
 }
