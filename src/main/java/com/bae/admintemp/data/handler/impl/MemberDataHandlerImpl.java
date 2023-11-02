@@ -26,18 +26,20 @@ public class MemberDataHandlerImpl implements MemberDataHandler {
     }
 
     @Override
-    public Member saveMemberEntity(int userId, String userPw, String userName, String mobile, String email, Date createAt, Date updateAt, Date expirationAt, Date secessionAt, String secessionReason, String roles) {
+    public Member saveMemberEntity(String userId, String userPw, String userName, String mobile, String email, Date createAt,
+                                   Date updateAt, Date expirationAt, Date secessionAt, String secessionReason, String roles) {
 
         LOGGER.debug("[saveProductEntity] 매개변수를 통해 Entity 객체 생성");
-        Member member = new Member(userId, userPw, userName, mobile, email, createAt, updateAt, expirationAt, secessionAt, secessionReason, roles);
+        Member member = new Member(userId, userPw, userName, mobile, email, createAt,
+                updateAt, expirationAt, secessionAt, secessionReason, roles);
 
-        LOGGER.info("[saveMemberEntity] memberDAO로 Member 정보 저장 요청. memberId : {}", userId);
+        LOGGER.info("[saveMemberEntity] memberDAO로 Member 정보 저장 요청. userId : {}", userId);
         return memberDAO.saveMember(member);
     }
 
     @Override
     public Member getMemberEntity(String userId) {
-        LOGGER.info("[saveMemberEntity] memberDAO로 Member 정보 요청. memberId : {}", userId);
+        LOGGER.info("[saveMemberEntity] memberDAO로 Member 정보 요청. userId : {}", userId);
         return memberDAO.getMember(userId);
     }
 }

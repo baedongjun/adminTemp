@@ -1,6 +1,6 @@
 package com.bae.admintemp.config;
 
-import com.bae.admintemp.domain.Member;
+import com.bae.admintemp.data.dto.MemberDto;
 import com.bae.admintemp.service.MemberService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,13 +20,13 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String insertedUserId) throws UsernameNotFoundException {
-        Optional<Member> findOne = memberService.findOne(insertedUserId);
-        Member member = findOne.orElseThrow(() -> new UsernameNotFoundException("없는 회원입니다 ㅠ"));
+        Optional<MemberDto> findOne = memberService.findOne(insertedUserId);
+        MemberDto memberDto = findOne.orElseThrow(() -> new UsernameNotFoundException("없는 회원입니다 ㅠ"));
 
         return User.builder()
-                .username(member.getUserId())
-                .password(member.getUserPw())
-                .roles(member.getRoles())
+                .username(memberDto.getUserId())
+                .password(memberDto.getUserPw())
+                .roles(memberDto.getRoles())
                 .build();
     }
 }

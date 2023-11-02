@@ -33,13 +33,13 @@ public class BoardDataHandlerImpl implements BoardDataHandler {
         LOGGER.debug("[saveBoardEntity] 매개변수를 통해 Entity 객체 생성");
         Board board = new Board(id, title, contents, imgUrl, imgName, viewCnt, secure, likeCnt, createAt, updateAt, member, category);
 
-        LOGGER.info("[saveBoardEntity] boardDAO로 Board 정보 저장 요청. boardId : {}", id);
+        LOGGER.info("[saveBoardEntity] boardDAO로 Board 정보 저장 요청. id : {}", id);
         return boardDAO.saveBoard(board);
     }
 
     @Override
     public Board getBoardEntity(int id) {
-        LOGGER.info("[saveBoardEntity] boardDAO로 Board 정보 요청. boardId : {}", id);
+        LOGGER.info("[saveBoardEntity] boardDAO로 Board 정보 요청. id : {}", id);
         return boardDAO.getBoard(id);
     }
 }

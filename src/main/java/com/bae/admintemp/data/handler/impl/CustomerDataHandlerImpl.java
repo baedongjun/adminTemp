@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 @Transactional
 public class CustomerDataHandlerImpl implements CustomerDataHandler {
@@ -24,18 +26,22 @@ public class CustomerDataHandlerImpl implements CustomerDataHandler {
     }
 
     @Override
-    public Customer saveCustomerEntity(String customerId, String customerName, int customerPrice, int customerStock) {
+    public Customer saveCustomerEntity(String userId, String userPw, String userName, String mobile, String email, String provider
+            , String grade, String zip, String addr, String addr2, String smsYn, String emailYn, Date createAt, Date updateAt
+            , Date expirationAt, Date secessionAt, String secessionReason) {
 
         LOGGER.debug("[saveCustomerEntity] 매개변수를 통해 Entity 객체 생성");
-        Customer customer = new Customer(customerId, customerName, customerPrice, customerStock);
+        Customer customer = new Customer(userId, userPw, userName, mobile, email, provider
+                , grade, zip, addr, addr2, smsYn, emailYn, createAt, updateAt
+                , expirationAt, secessionAt, secessionReason);
 
-        LOGGER.info("[saveCustomerEntity] customerDAO로 Customer 정보 저장 요청. customerId : {}", customerId);
+        LOGGER.info("[saveCustomerEntity] customerDAO로 Customer 정보 저장 요청. userId : {}", userId);
         return customerDAO.saveCustomer(customer);
     }
 
     @Override
-    public Customer getCustomerEntity(String customerId) {
-        LOGGER.info("[saveCustomerEntity] customerDAO로 Customer 정보 요청. customerId : {}", customerId);
-        return customerDAO.getCustomer(customerId);
+    public Customer getCustomerEntity(String userId) {
+        LOGGER.info("[saveCustomerEntity] customerDAO로 Customer 정보 요청. userId : {}", userId);
+        return customerDAO.getCustomer(userId);
     }
 }

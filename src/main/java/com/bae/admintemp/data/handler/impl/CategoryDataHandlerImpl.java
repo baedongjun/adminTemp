@@ -24,20 +24,18 @@ public class CategoryDataHandlerImpl implements CategoryDataHandler {
     }
 
     @Override
-    public Category saveCategoryEntity(String categoryId, String categoryName, int categoryPrice,
-                                     int categoryStock) {
+    public Category saveCategoryEntity(int cateId, int parentCateId, String cateName) {
 
         LOGGER.debug("[saveCategoryEntity] 매개변수를 통해 Entity 객체 생성");
-        Category category = new Category(categoryId, categoryName, categoryPrice,
-                categoryStock);
+        Category category = new Category(cateId, parentCateId, cateName);
 
-        LOGGER.info("[saveCategoryEntity] categoryDAO로 Category 정보 저장 요청. categoryId : {}", categoryId);
+        LOGGER.info("[saveCategoryEntity] categoryDAO로 Category 정보 저장 요청. cateId : {}", cateId);
         return categoryDAO.saveCategory(category);
     }
 
     @Override
-    public Category getCategoryEntity(String categoryId) {
-        LOGGER.info("[saveCategoryEntity] categoryDAO로 Category 정보 요청. categoryId : {}", categoryId);
-        return categoryDAO.getCategory(categoryId);
+    public Category getCategoryEntity(int cateId) {
+        LOGGER.info("[saveCategoryEntity] categoryDAO로 Category 정보 요청. cateId : {}", cateId);
+        return categoryDAO.getCategory(cateId);
     }
 }

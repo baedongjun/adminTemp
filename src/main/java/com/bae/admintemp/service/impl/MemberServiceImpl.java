@@ -1,14 +1,17 @@
 package com.bae.admintemp.service.impl;
 
-import com.bae.admintemp.data.dto.ProductDto;
-import com.bae.admintemp.data.entity.Product;
-import com.bae.admintemp.data.handler.ProductDataHandler;
+import com.bae.admintemp.data.dto.MemberDto;
+import com.bae.admintemp.data.entity.Member;
+import com.bae.admintemp.data.handler.MemberDataHandler;
+import com.bae.admintemp.data.repository.MemberRepository;
 import com.bae.admintemp.service.MemberService;
-import com.bae.admintemp.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -17,40 +20,49 @@ public class MemberServiceImpl implements MemberService {
 
     MemberDataHandler memberDataHandler;
 
+    MemberRepository memberRepository;
+
     @Autowired
-    public ProductServiceImpl(ProductDataHandler productDataHandler) {
-        this.productDataHandler = productDataHandler;
+    public MemberServiceImpl(MemberDataHandler memberDataHandler) {
+        this.memberDataHandler = memberDataHandler;
+        this.memberRepository = memberRepository;
     }
 
     @Override
-    public ProductDto saveProduct(String productId, String productName, int productPrice,
-                                  int productStock) {
+    public MemberDto saveMember(String userId, String userPw, String userName, String mobile, String email,
+                                Date createAt, Date updateAt, Date expirationAt, Date secessionAt,
+                                String secessionReason, String roles) {
 
-        LOGGER.info("[saveProduct] productDataHandler 로 상품 정보 저장 요청");
-        Product product = productDataHandler.saveProductEntity(productId, productName,
-                productPrice, productStock);
+        LOGGER.info("[saveMember] memberDataHandler 로 상품 정보 저장 요청");
+        Member member = memberDataHandler.saveMemberEntity(userId, userPw, userName, mobile, email, createAt, updateAt,
+                expirationAt, secessionAt, secessionReason, roles);
 
-        LOGGER.info("[saveProduct] Entity 객체를 DTO 객체로 변환 작업. productId : {}",
-                product.getId());
-        ProductDto productDto = new ProductDto(product.getId(),
-                product.getName(), product.getPrice(),
-                product.getStock());
+        LOGGER.info("[saveMember] Entity 객체를 DTO 객체로 변환 작업. userId : {}", member.getUserId());
+        MemberDto memberDto = new MemberDto(member.getUserId(), member.getUserPw(), member.getUserName(),
+                member.getMobile(), member.getEmail(), member.getCreateAt(), member.getUpdateAt(),
+                member.getExpirationAt(), member.getSecessionAt(), member.getSecessionReason(), member.getRoles()
+        );
 
-        return productDto;
+        return memberDto;
     }
 
     @Override
-    public ProductDto getProduct(String productId) {
+    public MemberDto getMember(String userId) {
 
-        LOGGER.info("[getProduct] productDataHandler 로 상품 정보 조회 요청");
-        Product product = productDataHandler.getProductEntity(productId);
+        LOGGER.info("[getMember] memberDataHandler 로 상품 정보 조회 요청");
+        Member member = memberDataHandler.getMemberEntity(userId);
 
-        LOGGER.info("[getProduct] Entity 객체를 DTO 객체로 변환 작업. productId : {}",
-                product.getId());
-        ProductDto productDto = new ProductDto(product.getId(),
-                product.getName(), product.getPrice(),
-                product.getStock());
+        LOGGER.info("[getMember] Entity 객체를 DTO 객체로 변환 작업. userId : {}",
+                member.getUserId());
+        MemberDto memberDto = new MemberDto(member.getUserId(), member.getUserPw(), member.getUserName(),
+                member.getMobile(), member.getEmail(), member.getCreateAt(), member.getUpdateAt(),
+                member.getExpirationAt(), member.getSecessionAt(), member.getSecessionReason(), member.getRoles());
 
-        return productDto;
+        return memberDto;
+    }
+
+    @Override
+    public Optional<MemberDto> findOne(String userId) {
+        return memberRepository.findByUserId(userId);
     }
 }
