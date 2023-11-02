@@ -17,11 +17,9 @@ import java.util.List;
 @Table(name = "category")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cateId;
     private Integer parentCateId;
     private String cateName;
-
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     List<Board> list = new ArrayList<>();
 

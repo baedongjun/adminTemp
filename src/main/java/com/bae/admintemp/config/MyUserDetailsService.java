@@ -20,13 +20,13 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String insertedUserId) throws UsernameNotFoundException {
-        Optional<MemberDto> findOne = memberService.findOne(insertedUserId);
-        MemberDto memberDto = findOne.orElseThrow(() -> new UsernameNotFoundException("없는 회원입니다 ㅠ"));
+        MemberDto findOne = memberService.getMember(insertedUserId);
+//        MemberDto memberDto = findOne.orElseThrow(() -> new UsernameNotFoundException("없는 회원입니다 ㅠ"));
 
         return User.builder()
-                .username(memberDto.getUserId())
-                .password(memberDto.getUserPw())
-                .roles(memberDto.getRoles())
+                .username(findOne.getUserId())
+                .password(findOne.getUserPw())
+                .roles(findOne.getRoles())
                 .build();
     }
 }

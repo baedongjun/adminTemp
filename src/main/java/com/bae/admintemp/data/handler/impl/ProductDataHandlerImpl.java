@@ -24,12 +24,10 @@ public class ProductDataHandlerImpl implements ProductDataHandler {
     }
 
     @Override
-    public Product saveProductEntity(String productId, String productName, int productPrice,
-                                     int productStock) {
+    public Product saveProductEntity(String productId, String productName, int productPrice, int productStock) {
 
         LOGGER.debug("[saveProductEntity] 매개변수를 통해 Entity 객체 생성");
-        Product product = new Product(productId, productName, productPrice,
-                productStock);
+        Product product = new Product(productId, productName, productPrice, productStock);
 
         LOGGER.info("[saveProductEntity] productDAO로 Product 정보 저장 요청. productId : {}", productId);
         return productDAO.saveProduct(product);

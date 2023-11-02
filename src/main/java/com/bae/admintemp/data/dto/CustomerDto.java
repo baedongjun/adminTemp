@@ -1,7 +1,12 @@
 package com.bae.admintemp.data.dto;
 
+import com.bae.admintemp.data.entity.Customer;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
@@ -28,9 +33,37 @@ public class CustomerDto {
     private String addr2;
     private String smsYn;
     private String emailYn;
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createAt;
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date updateAt;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date expirationAt;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date secessionAt;
     private String secessionReason;
+
+    public Customer toEntity(){
+        return Customer.builder()
+                .userId(userId)
+                .userPw(userPw)
+                .userName(userName)
+                .mobile(mobile)
+                .email(email)
+                .provider(provider)
+                .grade(grade)
+                .zip(zip)
+                .addr(addr)
+                .addr2(addr2)
+                .smsYn(smsYn)
+                .emailYn(emailYn)
+                .createAt(createAt)
+                .updateAt(updateAt)
+                .expirationAt(expirationAt)
+                .secessionAt(secessionAt)
+                .secessionReason(secessionReason)
+                .build();
+    }
 }

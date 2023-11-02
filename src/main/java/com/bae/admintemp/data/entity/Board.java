@@ -18,7 +18,6 @@ import java.util.Date;
 @Table(name = "board")
 public class Board {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String title;
     String contents;
@@ -27,11 +26,7 @@ public class Board {
     Integer viewCnt;
     String secure;
     Integer likeCnt;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @CreationTimestamp
     Date createAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @UpdateTimestamp
     Date updateAt;
 
     @ManyToOne

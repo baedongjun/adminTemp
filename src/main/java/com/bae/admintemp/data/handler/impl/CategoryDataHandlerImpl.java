@@ -2,6 +2,7 @@ package com.bae.admintemp.data.handler.impl;
 
 
 import com.bae.admintemp.data.dao.CategoryDAO;
+import com.bae.admintemp.data.entity.Board;
 import com.bae.admintemp.data.entity.Category;
 import com.bae.admintemp.data.handler.CategoryDataHandler;
 import jakarta.transaction.Transactional;
@@ -9,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -24,10 +27,10 @@ public class CategoryDataHandlerImpl implements CategoryDataHandler {
     }
 
     @Override
-    public Category saveCategoryEntity(int cateId, int parentCateId, String cateName) {
+    public Category saveCategoryEntity(int cateId, int parentCateId, String cateName, List<Board> list) {
 
         LOGGER.debug("[saveCategoryEntity] 매개변수를 통해 Entity 객체 생성");
-        Category category = new Category(cateId, parentCateId, cateName);
+        Category category = new Category(cateId, parentCateId, cateName, list);
 
         LOGGER.info("[saveCategoryEntity] categoryDAO로 Category 정보 저장 요청. cateId : {}", cateId);
         return categoryDAO.saveCategory(category);

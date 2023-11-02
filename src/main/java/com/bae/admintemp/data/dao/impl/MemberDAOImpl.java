@@ -1,12 +1,15 @@
 package com.bae.admintemp.data.dao.impl;
 
 import com.bae.admintemp.data.dao.MemberDAO;
+import com.bae.admintemp.data.dto.MemberDto;
 import com.bae.admintemp.data.entity.Member;
 import com.bae.admintemp.data.repository.MemberRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class MemberDAOImpl implements MemberDAO {
@@ -34,6 +37,11 @@ public class MemberDAOImpl implements MemberDAO {
         Member member = memberRepository.getById(userId);
         LOGGER.info("[getMember] member 정보 요청 완료. memberId : {}", member.getUserId());
         return member;
+    }
+
+    @Override
+    public Optional<Member> findOne(String userId) {
+        return memberRepository.findByUserId(userId);
     }
 
     /**

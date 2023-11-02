@@ -30,15 +30,9 @@ public class Customer {
     String addr2;
     String smsYn;
     String emailYn;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @CreationTimestamp
     Date createAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @UpdateTimestamp
     Date updateAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
     Date expirationAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
     Date secessionAt;
     String secessionReason;
 

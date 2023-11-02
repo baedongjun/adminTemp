@@ -25,19 +25,12 @@ public class Member {
     String userName;
     String mobile;
     String email;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @CreationTimestamp
     Date createAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @UpdateTimestamp
     Date updateAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
     Date expirationAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
     Date secessionAt;
     String secessionReason;
     String roles;
-
     @OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
     List<Board> list = new ArrayList<>();
 

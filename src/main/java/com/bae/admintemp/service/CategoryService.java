@@ -1,28 +1,22 @@
 package com.bae.admintemp.service;
 
+import com.bae.admintemp.data.dto.BoardDto;
+import com.bae.admintemp.data.dto.CategoryDto;
+import com.bae.admintemp.data.dto.MemberDto;
+import com.bae.admintemp.data.entity.Board;
 import com.bae.admintemp.data.entity.Category;
 import com.bae.admintemp.data.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 
-@Service
-public class CategoryService {
-    private final CategoryRepository categoryRepository;
+public interface CategoryService {
+    CategoryDto saveCategory(int cateId, int parentCateId, String cateName, List<Board> list);
 
-    @Autowired
-    public CategoryService(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
-    }
+    CategoryDto getCategory(int cateId);
 
-    public List<Category> getList() {
-        return (List<Category>) categoryRepository.findAll();
-    }
-
-    public Optional<Category> findOne(int cateId) {
-        return categoryRepository.findByCateId(cateId);
-    }
 }

@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class RegisterMemberService {
     private final PasswordEncoder passwordEncoder;
-    private final MemberRepository repository;
+    private final MemberRepository memberrepository;
 
     @Autowired
-    public RegisterMemberService(PasswordEncoder passwordEncoder, MemberRepository repository) {
+    public RegisterMemberService(PasswordEncoder passwordEncoder, MemberRepository memberrepository) {
         this.passwordEncoder = passwordEncoder;
-        this.repository = repository;
+        this.memberrepository = memberrepository;
     }
 
     public String join(String userId, String userPw) {
@@ -23,13 +23,13 @@ public class RegisterMemberService {
         member.setUserPw(passwordEncoder.encode(userPw));
         member.setRoles("USER");
         validateDuplicateMember(member);
-        repository.save(member);
+        memberrepository.save(member);
 
         return member.getUserId();
     }
 
     private void validateDuplicateMember(Member member) {
-        repository.findByUserId(member.getUserId())
+        memberrepository.findByUserId(member.getUserId())
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });

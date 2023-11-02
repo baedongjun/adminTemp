@@ -1,9 +1,9 @@
 package com.bae.admintemp.service.impl;
 
 import com.bae.admintemp.data.dto.MemberDto;
+import com.bae.admintemp.data.entity.Board;
 import com.bae.admintemp.data.entity.Member;
 import com.bae.admintemp.data.handler.MemberDataHandler;
-import com.bae.admintemp.data.repository.MemberRepository;
 import com.bae.admintemp.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -20,27 +20,24 @@ public class MemberServiceImpl implements MemberService {
 
     MemberDataHandler memberDataHandler;
 
-    MemberRepository memberRepository;
-
     @Autowired
     public MemberServiceImpl(MemberDataHandler memberDataHandler) {
         this.memberDataHandler = memberDataHandler;
-        this.memberRepository = memberRepository;
     }
 
     @Override
     public MemberDto saveMember(String userId, String userPw, String userName, String mobile, String email,
                                 Date createAt, Date updateAt, Date expirationAt, Date secessionAt,
-                                String secessionReason, String roles) {
+                                String secessionReason, String roles, List<Board> list) {
 
         LOGGER.info("[saveMember] memberDataHandler 로 상품 정보 저장 요청");
         Member member = memberDataHandler.saveMemberEntity(userId, userPw, userName, mobile, email, createAt, updateAt,
-                expirationAt, secessionAt, secessionReason, roles);
+                expirationAt, secessionAt, secessionReason, roles, list);
 
         LOGGER.info("[saveMember] Entity 객체를 DTO 객체로 변환 작업. userId : {}", member.getUserId());
         MemberDto memberDto = new MemberDto(member.getUserId(), member.getUserPw(), member.getUserName(),
                 member.getMobile(), member.getEmail(), member.getCreateAt(), member.getUpdateAt(),
-                member.getExpirationAt(), member.getSecessionAt(), member.getSecessionReason(), member.getRoles()
+                member.getExpirationAt(), member.getSecessionAt(), member.getSecessionReason(), member.getRoles(), member.getList()
         );
 
         return memberDto;
@@ -56,13 +53,9 @@ public class MemberServiceImpl implements MemberService {
                 member.getUserId());
         MemberDto memberDto = new MemberDto(member.getUserId(), member.getUserPw(), member.getUserName(),
                 member.getMobile(), member.getEmail(), member.getCreateAt(), member.getUpdateAt(),
-                member.getExpirationAt(), member.getSecessionAt(), member.getSecessionReason(), member.getRoles());
+                member.getExpirationAt(), member.getSecessionAt(), member.getSecessionReason(), member.getRoles(), member.getList()
+        );
 
         return memberDto;
-    }
-
-    @Override
-    public Optional<MemberDto> findOne(String userId) {
-        return memberRepository.findByUserId(userId);
     }
 }
