@@ -35,12 +35,6 @@ public class MemberDto {
     @Email
     private String email;
     @Temporal(value = TemporalType.TIMESTAMP)
-    @CreationTimestamp
-    private Date createAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @UpdateTimestamp
-    private Date updateAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
     private Date expirationAt;
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date secessionAt;
@@ -56,8 +50,6 @@ public class MemberDto {
                 .userName(userName)
                 .mobile(mobile)
                 .email(email)
-                .createAt(createAt)
-                .updateAt(updateAt)
                 .expirationAt(expirationAt)
                 .secessionAt(secessionAt)
                 .secessionReason(secessionReason)

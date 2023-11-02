@@ -29,11 +29,10 @@ public class BoardDataHandlerImpl implements BoardDataHandler {
 
     @Override
     public Board saveBoardEntity(int id, String title, String contents, String imgUrl, String imgName, int viewCnt,
-                                 String secure, int likeCnt, Date createAt, Date updateAt, Member member, Category category) {
+                                 String secure, int likeCnt, Member member, Category category) {
 
         LOGGER.debug("[saveBoardEntity] 매개변수를 통해 Entity 객체 생성");
-        Board board = new Board(id, title, contents, imgUrl, imgName, viewCnt, secure, likeCnt, createAt, updateAt, member,
-                category);
+        Board board = new Board(id, title, contents, imgUrl, imgName, viewCnt, secure, likeCnt, member, category);
 
         LOGGER.info("[saveBoardEntity] boardDAO로 Board 정보 저장 요청. id : {}", id);
         return boardDAO.saveBoard(board);

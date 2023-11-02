@@ -34,12 +34,6 @@ public class BoardDto {
     private int viewCnt;
     private String secure;
     private int likeCnt;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @CreationTimestamp
-    private Date createAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @UpdateTimestamp
-    private Date updateAt;
 
     private Member member;
 
@@ -55,8 +49,6 @@ public class BoardDto {
                 .viewCnt(viewCnt)
                 .secure(secure)
                 .likeCnt(likeCnt)
-                .createAt(createAt)
-                .updateAt(updateAt)
                 .member(member)
                 .category(category)
                 .build();

@@ -35,13 +35,6 @@ public class CustomerDto {
     private String addr2;
     private String smsYn;
     private String emailYn;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @CreationTimestamp
-    private Date createAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
-    @UpdateTimestamp
-    private Date updateAt;
-    @Temporal(value = TemporalType.TIMESTAMP)
     private Date expirationAt;
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date secessionAt;
@@ -61,8 +54,6 @@ public class CustomerDto {
                 .addr2(addr2)
                 .smsYn(smsYn)
                 .emailYn(emailYn)
-                .createAt(createAt)
-                .updateAt(updateAt)
                 .expirationAt(expirationAt)
                 .secessionAt(secessionAt)
                 .secessionReason(secessionReason)

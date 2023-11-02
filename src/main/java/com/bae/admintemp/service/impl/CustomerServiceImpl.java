@@ -24,20 +24,19 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDto saveCustomer(String userId, String userPw, String userName, String mobile, String email, String provider
-            , String grade, String zip, String addr, String addr2, String smsYn, String emailYn, Date createAt, Date updateAt
-            , Date expirationAt, Date secessionAt, String secessionReason) {
+    public CustomerDto saveCustomer(String userId, String userPw, String userName, String mobile, String email, String provider,
+                                    String grade, String zip, String addr, String addr2, String smsYn, String emailYn, Date expirationAt,
+                                    Date secessionAt, String secessionReason) {
 
         LOGGER.info("[saveCustomer] customerDataHandler 로 상품 정보 저장 요청");
         Customer customer = customerDataHandler.saveCustomerEntity(userId, userPw, userName, mobile, email, provider
-                , grade, zip, addr, addr2, smsYn, emailYn, createAt, updateAt
-                , expirationAt, secessionAt, secessionReason);
+                , grade, zip, addr, addr2, smsYn, emailYn, expirationAt, secessionAt, secessionReason);
 
         LOGGER.info("[saveCustomer] Entity 객체를 DTO 객체로 변환 작업. userId : {}", customer.getUserId());
         CustomerDto customerDto = new CustomerDto(customer.getUserId(), customer.getUserPw(), customer.getUserName(),
                 customer.getMobile(), customer.getEmail(), customer.getProvider(), customer.getGrade(), customer.getZip(),
-                customer.getAddr(), customer.getAddr2(), customer.getSmsYn(), customer.getEmailYn(), customer.getCreateAt(),
-                customer.getUpdateAt(), customer.getExpirationAt(), customer.getSecessionAt(), customer.getSecessionReason()
+                customer.getAddr(), customer.getAddr2(), customer.getSmsYn(), customer.getEmailYn(),
+                customer.getExpirationAt(), customer.getSecessionAt(), customer.getSecessionReason()
                 );
 
         return customerDto;
@@ -52,8 +51,8 @@ public class CustomerServiceImpl implements CustomerService {
         LOGGER.info("[getCustomer] Entity 객체를 DTO 객체로 변환 작업. userId : {}", customer.getUserId());
         CustomerDto customerDto = new CustomerDto(customer.getUserId(), customer.getUserPw(), customer.getUserName(),
                 customer.getMobile(), customer.getEmail(), customer.getProvider(), customer.getGrade(), customer.getZip(),
-                customer.getAddr(), customer.getAddr2(), customer.getSmsYn(), customer.getEmailYn(), customer.getCreateAt(),
-                customer.getUpdateAt(), customer.getExpirationAt(), customer.getSecessionAt(), customer.getSecessionReason()
+                customer.getAddr(), customer.getAddr2(), customer.getSmsYn(), customer.getEmailYn(),
+                customer.getExpirationAt(), customer.getSecessionAt(), customer.getSecessionReason()
         );
 
         return customerDto;

@@ -18,15 +18,13 @@ import java.util.List;
 @Builder
 @ToString
 @Table(name = "member")
-public class Member {
+public class Member extends BaseEntity {
     @Id
     String userId;
     String userPw;
     String userName;
     String mobile;
     String email;
-    Date createAt;
-    Date updateAt;
     Date expirationAt;
     Date secessionAt;
     String secessionReason;
@@ -41,8 +39,6 @@ public class Member {
                 .userName(userName)
                 .mobile(mobile)
                 .email(email)
-                .createAt(createAt)
-                .updateAt(updateAt)
                 .expirationAt(expirationAt)
                 .secessionAt(secessionAt)
                 .secessionReason(secessionReason)

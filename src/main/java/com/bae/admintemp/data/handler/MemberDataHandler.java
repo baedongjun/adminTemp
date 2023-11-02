@@ -11,8 +11,8 @@ import java.util.Optional;
 
 public interface MemberDataHandler {
 
-    Member saveMemberEntity(String userId, String userPw, String userName, String mobile, String email, Date createAt,
-                            Date updateAt, Date expirationAt, Date secessionAt, String secessionReason, String roles, List<Board> list);
+    Member saveMemberEntity(String userId, String userPw, String userName, String mobile, String email, Date expirationAt,
+                            Date secessionAt, String secessionReason, String roles, List<Board> list);
 
     Member getMemberEntity(String userId);
 

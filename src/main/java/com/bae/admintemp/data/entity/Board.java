@@ -16,7 +16,7 @@ import java.util.Date;
 @Builder
 @ToString
 @Table(name = "board")
-public class Board {
+public class Board extends BaseEntity {
     @Id
     Integer id;
     String title;
@@ -26,8 +26,6 @@ public class Board {
     Integer viewCnt;
     String secure;
     Integer likeCnt;
-    Date createAt;
-    Date updateAt;
 
     @ManyToOne
     @JoinColumn(name = "userId", nullable = false)
@@ -47,8 +45,6 @@ public class Board {
                 .viewCnt(viewCnt)
                 .secure(secure)
                 .likeCnt(likeCnt)
-                .createAt(createAt)
-                .updateAt(updateAt)
                 .member(member)
                 .category(category)
                 .build();

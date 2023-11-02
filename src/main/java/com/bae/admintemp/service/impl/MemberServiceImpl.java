@@ -32,17 +32,17 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
 
     @Override
     public MemberDto saveMember(String userId, String userPw, String userName, String mobile, String email,
-                                Date createAt, Date updateAt, Date expirationAt, Date secessionAt,
+                                Date expirationAt, Date secessionAt,
                                 String secessionReason, String roles, List<Board> list) {
 
         LOGGER.info("[saveMember] memberDataHandler 로 상품 정보 저장 요청");
-        Member member = memberDataHandler.saveMemberEntity(userId, userPw, userName, mobile, email, createAt, updateAt,
+        Member member = memberDataHandler.saveMemberEntity(userId, userPw, userName, mobile, email,
                 expirationAt, secessionAt, secessionReason, roles, list);
 
         LOGGER.info("[saveMember] Entity 객체를 DTO 객체로 변환 작업. userId : {}", member.getUserId());
         MemberDto memberDto = new MemberDto(member.getUserId(), member.getUserPw(), member.getUserName(),
-                member.getMobile(), member.getEmail(), member.getCreateAt(), member.getUpdateAt(),
-                member.getExpirationAt(), member.getSecessionAt(), member.getSecessionReason(), member.getRoles(), member.getList()
+                member.getMobile(), member.getEmail(), member.getExpirationAt(), member.getSecessionAt(),
+                member.getSecessionReason(), member.getRoles(), member.getList()
         );
 
         return memberDto;
@@ -57,8 +57,8 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
         LOGGER.info("[getMember] Entity 객체를 DTO 객체로 변환 작업. userId : {}",
                 member.getUserId());
         MemberDto memberDto = new MemberDto(member.getUserId(), member.getUserPw(), member.getUserName(),
-                member.getMobile(), member.getEmail(), member.getCreateAt(), member.getUpdateAt(),
-                member.getExpirationAt(), member.getSecessionAt(), member.getSecessionReason(), member.getRoles(), member.getList()
+                member.getMobile(), member.getEmail(), member.getExpirationAt(), member.getSecessionAt(),
+                member.getSecessionReason(), member.getRoles(), member.getList()
         );
 
         return memberDto;

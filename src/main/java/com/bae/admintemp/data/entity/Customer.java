@@ -16,7 +16,7 @@ import java.util.Date;
 @Builder
 @ToString
 @Table(name = "customer")
-public class Customer {
+public class Customer extends BaseEntity {
     @Id
     String userId;
     String userPw;
@@ -30,8 +30,6 @@ public class Customer {
     String addr2;
     String smsYn;
     String emailYn;
-    Date createAt;
-    Date updateAt;
     Date expirationAt;
     Date secessionAt;
     String secessionReason;
@@ -50,8 +48,6 @@ public class Customer {
                 .addr2(addr2)
                 .smsYn(smsYn)
                 .emailYn(emailYn)
-                .createAt(createAt)
-                .updateAt(updateAt)
                 .expirationAt(expirationAt)
                 .secessionAt(secessionAt)
                 .secessionReason(secessionReason)

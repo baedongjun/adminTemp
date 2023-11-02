@@ -8,8 +8,7 @@ import java.util.List;
 
 public interface MemberService {
     MemberDto saveMember(String userId, String userPw, String userName, String mobile, String email,
-                         Date createAt, Date updateAt, Date expirationAt, Date secessionAt,
-                         String secessionReason, String roles, List<Board> list);
+                         Date expirationAt, Date secessionAt, String secessionReason, String roles, List<Board> list);
 
     MemberDto getMember(String userId);
 }

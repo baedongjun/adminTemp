@@ -27,13 +27,12 @@ public class CustomerDataHandlerImpl implements CustomerDataHandler {
 
     @Override
     public Customer saveCustomerEntity(String userId, String userPw, String userName, String mobile, String email, String provider
-            , String grade, String zip, String addr, String addr2, String smsYn, String emailYn, Date createAt, Date updateAt
-            , Date expirationAt, Date secessionAt, String secessionReason) {
+            , String grade, String zip, String addr, String addr2, String smsYn, String emailYn, Date expirationAt,
+                                       Date secessionAt, String secessionReason) {
 
         LOGGER.debug("[saveCustomerEntity] 매개변수를 통해 Entity 객체 생성");
         Customer customer = new Customer(userId, userPw, userName, mobile, email, provider
-                , grade, zip, addr, addr2, smsYn, emailYn, createAt, updateAt
-                , expirationAt, secessionAt, secessionReason);
+                , grade, zip, addr, addr2, smsYn, emailYn, expirationAt, secessionAt, secessionReason);
 
         LOGGER.info("[saveCustomerEntity] customerDAO로 Customer 정보 저장 요청. userId : {}", userId);
         return customerDAO.saveCustomer(customer);

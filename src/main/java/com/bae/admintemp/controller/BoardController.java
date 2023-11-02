@@ -1,12 +1,13 @@
 package com.bae.admintemp.controller;
 
 import com.bae.admintemp.data.dto.BoardDto;
-import com.bae.admintemp.data.dto.ProductDto;
 import com.bae.admintemp.service.BoardService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import java.util.List;
 @RequestMapping("/board")
 public class BoardController {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(BoardController.class);
     private final BoardService boardService;
 
     @Autowired
@@ -26,20 +27,13 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public String getList(Model model) {
-        List<BoardDto> list = boardService.getList();
-        model.addAttribute("list", list);
+    public String getBoardList(Model model) {
+        model.addAttribute("list", boardService.getList());
         return "board/list";
     }
 
-    @GetMapping("/write")
-    public String writeInput(Model model) {
-
-        return "board/write";
-    }
-
-    @GetMapping("/write/{id}")
-    public BoardDto getProduct(@PathVariable int id) {
+    @GetMapping("/board/{id}")
+    public BoardDto getBoard(@PathVariable int id) {
         long startTime = System.currentTimeMillis();
         LOGGER.info("[getBoard] perform {} of Around Hub API.", "getBoard");
 
@@ -47,41 +41,30 @@ public class BoardController {
 
         LOGGER.info(
                 "[getBoard] Response :: id = {}, title = {}, contents = {}, imgUrl = {}, imgName = {}, viewCnt = {}" +
-                        ", secure = {}, likeCnt; = {}, createAt = {}, updateAt = {}, member = {}, category = {}, Response Time = {}ms",
+                        ", secure = {}, likeCnt; = {}, member = {}, category = {}, Response Time = {}ms",
                 boardDto.getId(), boardDto.getTitle(), boardDto.getContents(), boardDto.getImgUrl(), boardDto.getImgName(),
-                boardDto.getViewCnt(), boardDto.getSecure(), boardDto.getLikeCnt(), boardDto.getCreateAt(), boardDto.getUpdateAt(),
-                boardDto.getMember(), boardDto.getCategory(),
+                boardDto.getViewCnt(), boardDto.getSecure(), boardDto.getLikeCnt(), boardDto.getMember(), boardDto.getCategory(),
                 (System.currentTimeMillis() - startTime));
         return boardDto;
     }
 
-    @PostMapping("/write")
-    public String writePost(@Valid BoardDto boardDto) {
-        boardService.write(boardDto);
-        return "redirect:/board/list";
+    @PostMapping("/board")
+    public ResponseEntity<BoardDto> createBoard(@Valid @RequestBody BoardDto boardDto) {
+        LOGGER.info("[createBoard] perform {} of Around Hub API.", "createBoard");
+
+        BoardDto response = boardService
+                .saveBoard(boardDto);
+
+        LOGGER.info(
+                "[createBoard] Response >> id : {}, title : {}, contents : {}, imgUrl : {}, imgName : {}, viewCnt : {}" +
+                        ", secure : {}, likeCnt : {}, member : {}, category : {}",
+                response.getId(), response.getTitle(), response.getContents(), response.getImgUrl(), response.getImgName(),
+                response.getViewCnt(), response.getSecure(), response.getLikeCnt(), response.getMember(), response.getCategory());
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @GetMapping("/view")
-    public String read(int id, Model model) {
-        BoardDto board = boardService.view(id);
-        if (board != null) {
-            model.addAttribute("board", board);
-        }
-        return "board/view";
+    @DeleteMapping("/board/{id}")
+    public ResponseEntity<BoardDto> deleteBoard(@PathVariable int id) {
+        return null;
     }
-
-    @GetMapping("/modify")
-    public String modifyGet(int id, Model model) {
-        BoardDto board = boardService.read(id);
-        model.addAttribute("board", board);
-        return "board/write";
-    }
-
-    @PostMapping("/remove")
-    public String remove(Integer id) {
-        boardService.remove(id);
-        return "redirect:/board/list";
-    }
-
-
 }

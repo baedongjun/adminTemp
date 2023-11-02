@@ -15,7 +15,7 @@ import java.util.List;
 @Builder
 @ToString
 @Table(name = "category")
-public class Category {
+public class Category extends BaseEntity {
     @Id
     private Integer cateId;
     private Integer parentCateId;
