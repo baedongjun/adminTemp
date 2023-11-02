@@ -7,6 +7,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -31,6 +32,7 @@ public class MemberDto {
     private String userPw;
     private String userName;
     private String mobile;
+    @Email
     private String email;
     @Temporal(value = TemporalType.TIMESTAMP)
     @CreationTimestamp

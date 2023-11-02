@@ -31,8 +31,8 @@ public class ProductController {
         this.productService = productService;
     }
 
-    // http://localhost:/product/{productId}
-    @GetMapping(value = "/{productId}")
+    // http://localhost:/product/product/{productId}
+    @GetMapping(value = "/product/{productId}")
     public ProductDto getProduct(@PathVariable String productId) {
 
         long startTime = System.currentTimeMillis();
@@ -75,8 +75,8 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    // http://localhost/product/{productId}
-    @DeleteMapping(value = "/{productId}")
+    // http://localhost/product/product/{productId}
+    @DeleteMapping(value = "/product/{productId}")
     public ProductDto deleteProduct(@PathVariable String productId) {
         return null;
     }

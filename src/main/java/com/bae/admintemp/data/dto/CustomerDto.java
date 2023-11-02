@@ -3,6 +3,7 @@ package com.bae.admintemp.data.dto;
 import com.bae.admintemp.data.entity.Customer;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,6 +26,7 @@ public class CustomerDto {
     private String userPw;
     private String userName;
     private String mobile;
+    @Email
     private String email;
     private String provider;
     private String grade;

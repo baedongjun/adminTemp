@@ -25,17 +25,17 @@ public class MemberDAOImpl implements MemberDAO {
 
     @Override
     public Member saveMember(Member member) {
-        LOGGER.info("[saveMember] member 정보 저장. memberId : {}", member.getUserId());
+        LOGGER.info("[saveMember] member 정보 저장. userId : {}", member.getUserId());
         Member member1 = memberRepository.save(member);
-        LOGGER.info("[saveMember] member 정보 저장완료. memberId : {}", member1.getUserId());
+        LOGGER.info("[saveMember] member 정보 저장완료. userId : {}", member1.getUserId());
         return member1;
     }
 
     @Override
     public Member getMember(String userId) {
-        LOGGER.info("[getMember] member 정보 요청. memberId : {}", userId);
+        LOGGER.info("[getMember] member 정보 요청. userId : {}", userId);
         Member member = memberRepository.getById(userId);
-        LOGGER.info("[getMember] member 정보 요청 완료. memberId : {}", member.getUserId());
+        LOGGER.info("[getMember] member 정보 요청 완료. userId : {}", member.getUserId());
         return member;
     }
 

@@ -8,13 +8,18 @@ import com.bae.admintemp.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberService, UserDetailsService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(MemberServiceImpl.class);
 
@@ -57,5 +62,17 @@ public class MemberServiceImpl implements MemberService {
         );
 
         return memberDto;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String insertedUserId) throws UsernameNotFoundException {
+        Optional<Member> findOne = memberDataHandler.findOne(insertedUserId);
+        Member member = findOne.orElseThrow(() -> new UsernameNotFoundException("없는 회원입니다 ㅠ"));
+
+        return User.builder()
+                .username(member.getUserId())
+                .password(member.getUserPw())
+                .roles(member.getRoles())
+                .build();
     }
 }
