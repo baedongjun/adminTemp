@@ -6,6 +6,8 @@ import com.bae.admintemp.data.entity.Category;
 import com.bae.admintemp.data.entity.Member;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 public interface BoardDataHandler {
 
@@ -13,5 +15,7 @@ public interface BoardDataHandler {
                           int likeCnt, Member member, Category category);
 
     Board getBoardEntity(int id);
+
+    List<Board> findAll();
 
 }

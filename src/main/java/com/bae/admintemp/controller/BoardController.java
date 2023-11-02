@@ -1,6 +1,8 @@
 package com.bae.admintemp.controller;
 
 import com.bae.admintemp.data.dto.BoardDto;
+import com.bae.admintemp.data.entity.Category;
+import com.bae.admintemp.data.entity.Member;
 import com.bae.admintemp.service.BoardService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -27,9 +29,9 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public String getBoardList(Model model) {
-        model.addAttribute("list", boardService.getList());
-        return "board/list";
+    public List<BoardDto> getBoardList() {
+        List<BoardDto> list = boardService.getList();
+        return list;
     }
 
     @GetMapping("/board/{id}")
@@ -52,8 +54,9 @@ public class BoardController {
     public ResponseEntity<BoardDto> createBoard(@Valid @RequestBody BoardDto boardDto) {
         LOGGER.info("[createBoard] perform {} of Around Hub API.", "createBoard");
 
-        BoardDto response = boardService
-                .saveBoard(boardDto);
+        BoardDto response = boardService.saveBoard(boardDto.getId(), boardDto.getTitle(), boardDto.getContents(), boardDto.getImgUrl(),
+                boardDto.getImgName(), boardDto.getViewCnt(), boardDto.getSecure(), boardDto.getLikeCnt(), boardDto.getMember(),
+                boardDto.getCategory());
 
         LOGGER.info(
                 "[createBoard] Response >> id : {}, title : {}, contents : {}, imgUrl : {}, imgName : {}, viewCnt : {}" +

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -42,5 +43,10 @@ public class BoardDataHandlerImpl implements BoardDataHandler {
     public Board getBoardEntity(int id) {
         LOGGER.info("[saveBoardEntity] boardDAO로 Board 정보 요청. id : {}", id);
         return boardDAO.getBoard(id);
+    }
+
+    @Override
+    public List<Board> findAll() {
+        return boardDAO.findAll();
     }
 }

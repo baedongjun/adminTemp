@@ -39,6 +39,19 @@ public class BoardDto {
 
     private Category category;
 
+    public BoardDto(Board board) {
+        this.id = board.getId();
+        this.title = board.getTitle();
+        this.contents = board.getContents();
+        this.imgUrl = board.getImgUrl();
+        this.imgName = board.getImgName();
+        this.viewCnt = board.getViewCnt();
+        this.secure = board.getSecure();
+        this.likeCnt = board.getLikeCnt();
+        this.member = board.getMember();
+        this.category = board.getCategory();
+    }
+
     public Board toEntity(){
         return Board.builder()
                 .id(id)

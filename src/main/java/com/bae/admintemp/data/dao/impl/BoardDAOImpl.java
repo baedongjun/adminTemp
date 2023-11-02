@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BoardDAOImpl implements BoardDAO {
 
@@ -34,6 +36,11 @@ public class BoardDAOImpl implements BoardDAO {
         Board board = boardRepository.getById(id);
         LOGGER.info("[getBoard] board 정보 요청 완료. boardId : {}", board.getId());
         return board;
+    }
+
+    @Override
+    public List<Board> findAll() {
+        return boardRepository.findAll();
     }
 
     /**
