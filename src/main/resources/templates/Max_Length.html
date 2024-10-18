@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/layout}">
+
+<th:block layout:fragment="content">
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0 sm_padding_15px">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Default Usage</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="white_card_body">
+                            <h6 class="card-subtitle mb-2">The badge will show up by default when the remaining chars are 25 or less:</h6>
+                            <input type="text" class="form-control" maxlength="25" name="maxlength-default" id="maxlength-default" placeholder="Enter text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Threshold Value</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="white_card_body">
+                            <h6 class="card-subtitle mb-2">Do you want the badge to show up when there are 20 chars or less? Use the <code>threshold</code> option:</h6>
+                            <input type="text" class="form-control" maxlength="25" name="maxlength-threshold" id="maxlength-threshold" placeholder="Enter text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">All the Options</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="white_card_body">
+                            <h6 class="card-subtitle mb-2">This is a complete example where all the options configured for the bootstrap-maxlength counter are setted.</h6>
+                            <input type="text" class="form-control" maxlength="25" name="maxlength-all-options" id="maxlength-all-options" placeholder="Enter text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Positions</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="white_card_body">
+                            <h6 class="card-subtitle mb-2">All you need to do is specify the placement option, with one of those strings. If none is specified, the positioning will be defauted to 'bottom'.</h6>
+                            <input type="text" class="form-control" maxlength="25" name="maxlength-positions" id="maxlength-positions" placeholder="Enter text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_header">
+                            <div class="box_header m-0">
+                                <div class="main-title">
+                                    <h3 class="m-0">Positions</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="white_card_body">
+                            <h6 class="card-subtitle mb-2">Bootstrap maxlength supports textarea as well as inputs.</h6>
+                            <textarea class="form-control" maxlength="225" rows="3" name="maxlength-textarea" id="maxlength-textarea" placeholder="This textarea has a limit of 225 chars."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</html>
