@@ -1,38 +1,123 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layouts/layout}">
+      layout:decorate="~{/layouts/full_layout}">
 
 <th:block layout:fragment="content">
-    <div class="container">
-        <form class="form-signin" method="post" action="/login-process">
-            <p class="text-center">
-                <img src="/images/nahwasa-profile.png" class="img-thumbnail" style="width: 200px;" alt="이 글이 보인다면 시큐리티 설정 잘못한거임!">
-            </p>
-            <h2 class="form-signin-heading text-center mb-5">nahwasa.com</h2>
+    <div id="sds-login-vue-inst">
+        <div class="login-wrapper syno-cjk">
+            <div data-v-f2061272="" class="toast-container" style="display: none;">
+                <div class="toast-bar">
 
-            <p>
-                <label for="username" class="sr-only">아이디</label>
-                <input type="text" id="username" name="userId" class="form-control" placeholder="아이디" required="" autofocus="">
-            </p>
-            <p>
-                <label for="password" class="sr-only">비밀번호</label>
-                <input type="password" id="password" name="userPw" class="form-control" placeholder="비밀번호" required="">
-            </p>
-            <button class="btn btn-lg btn-primary btn-block" type="submit" id="login_btn">로그인</button>
-        </form>
+                </div>
+            </div>
+            <div class="login-wallpaper">
+                <div style="background-color: rgb(76, 143, 191); width: 1920px; height: 911px; visibility: visible;">
+                    <img src="/img/bg_img_login.jpg" draggable="false" style="position: absolute; visibility: visible; width: 1920px; height: 1200px; left: 0px; top: -144.5px;">
+                </div>
+            </div>
+            <span mode="out-in">
+                <div class="login-container">
+                    <div class="login-header-section"></div>
+                    <div class="login-body-section">
+                        <div class="login-msg">
+                            <div>
+                                <div class="login-msg-title"></div>
+                                <div class="login-msg-desc"></div>
+                            </div>
+                        </div>
+                        <div class="login-tab-panel">
+                            <div class="tab-panel login-tabs only-one-tab">
+                                <div class="tab-mask-wrapper spinner">
+                                    <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg" class="login-spinner tab-mask-center tab-mask-spinner">
+                                        <g class="login-spinner-g">
+                                            <circle cx="33" cy="33" stroke-width="5" r="30.5" class="login-spinner-circle"></circle>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="tab-mask-wrapper" style="display: none;">
+                                    <div class="tab-mask-center">
+                                        <div class="bomber"></div>
+                                    </div>
+                                </div>
+                                <div class="tab-wrapper">
+                                    <div class="tab-label-ct">
+                                        <span class="tab-label active"></span>
+                                    </div>
+                                    <div class="tab-content-ct">
+                                        <div class="tab dsm-login-panel-tab">
+                                            <div>
+                                                <div class="field login-title">
+                                                    <span>crossfit korea</span>
+                                                </div>
+                                            </div>
+                                            <div class="login-tabs-content-wrapper login-content-section">
+                                                <div class="tab-panel-title">
+                                                    로그인
+                                                </div>
+                                                <div class="login-fieldset">
+                                                    <form id="loginForm" class="form-signin" method="post" action="/login-process">
+                                                        <div class="login-textfield-wrapper field">
+                                                            <div class="login-textfield">
+                                                                <span class=""></span>
+                                                                <div class="input-container">
+                                                                    <input id="username" type="text" placeholder="사용자 이름" autofocus="autofocus" name="userId" required>
+                                                                </div>
+                                                                <div class="border active-border"></div>
+                                                                <div class="border bottom-border"></div>
+                                                                <div class="border error-border"></div>
+                                                                <br>
+                                                                <div class="input-container">
+                                                                    <input id="password" type="password" placeholder="비밀번호" autofocus="autofocus" name="userPw" required>
+                                                                </div>
+                                                                <div class="border active-border"></div>
+                                                                <div class="border bottom-border"></div>
+                                                                <div class="border error-border"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div role="button" syno-id="account-panel-next-btn" aria-label="로그인" class="login-btn" id="login_btn">
+                                                            <div class="login-btn-spinner-wrapper">
+                                                                <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg" class="login-spinner login-btn-spinner">
+                                                                    <g class="login-spinner-g">
+                                                                        <circle cx="33" cy="33" stroke-width="5" r="30.5" class="login-spinner-circle"></circle>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                            <div class="login-btn-animation animation-active"></div>
+                                                            <div class="grow-bg" style="height: 3840px; width: 3840px; top: -1884px; left: -1884px; transform: scale(0.009375);"></div>
+                                                            <div class="arrow"></div>
+                                                        </div>
+                                                    </form>
+                                                </div>
 
-        <form class="form-signin" method="get" action="/join">
-            <button class="btn btn-lg btn-warning btn-block" type="submit">회원가입하기</button>
-        </form>
-
-        <script>
-            const loginBtn = document.getElementById('login_btn');
-
-            loginBtn.addEventListener('click', () => {
-                sessionStorage.setItem('userid', document.getElementById('username').value);
-            });
-        </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-footer-section">
+                        <div class="footer">
+                            <div class="box-wrapper">
+                                <div class="box" style="max-height: 57px;">
+                                    <div class="msg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
     </div>
+    <script>
+        const loginBtn = document.getElementById('login_btn');
+        const loginForm = document.getElementById('loginForm');
+
+        loginBtn.addEventListener('click', () => {
+            sessionStorage.setItem('userid', document.getElementById('username').value);
+            loginForm.submit();
+        });
+    </script>
 </th:block>
 </html>
