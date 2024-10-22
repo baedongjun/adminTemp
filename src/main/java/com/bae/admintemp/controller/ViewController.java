@@ -13,6 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class ViewController {
 
+    @GetMapping("/index")
+    public String indexPage() {
+        return "index";
+    }
+    @GetMapping("/index2")
+    public String indexPage2() {
+        return "index2";
+    }
+    @GetMapping("/index3")
+    public String indexPage3() {
+        return "index3";
+    }
     @GetMapping("/login")
     public String loginPage() {
         return "login";
